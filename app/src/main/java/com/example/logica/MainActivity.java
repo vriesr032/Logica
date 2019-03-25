@@ -2,6 +2,7 @@ package com.example.logica;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -36,9 +37,7 @@ public class MainActivity extends AppCompatActivity {
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkAnswers();
-                clearFields();
-                changeQuiz();
+                checkAnswers(mAnswer1.getText().toString(), mAnswer2.getText().toString(), mAnswer3.getText().toString(), mAnswer4.getText().toString());
             }
         });
     }
@@ -58,63 +57,42 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void checkAnswers(){
+    private void checkAnswers(String answer1, String answer2, String answer3, String answer4){
         switch (value){
             case 1:
-                if (mAnswer1.getText() == "T") {
-                    Toast.makeText(this, "Answer one is correct", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer1.getText() == "F") {
-                    Toast.makeText(this, "Answer one is wrong", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer2.getText() == "F") {
-                    Toast.makeText(this, "Answer two is correct", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer2.getText() == "T") {
-                    Toast.makeText(this, "Answer two is wrong", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer3.getText() == "F") {
-                    Toast.makeText(this, "Answer three is correct", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer3.getText() == "T") {
-                    Toast.makeText(this, "Answer three is wrong", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer4.getText() == "F") {
-                    Toast.makeText(this, "Answer four is correct", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer4.getText() == "T") {
-                    Toast.makeText(this, "Answer four is wrong", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(answer1) || TextUtils.isEmpty(answer2) || TextUtils.isEmpty(answer3) || TextUtils.isEmpty(answer4)){
+                    Toast.makeText(this, "Please fill in all the answers", Toast.LENGTH_SHORT).show();
+                } else if (answer1.equals("T") && answer2.equals("F") && answer3.equals("F") && answer4.equals("F")){
+                    Toast.makeText(this, "All the answers are correct", Toast.LENGTH_SHORT).show();
+                    clearFields();
+                    changeQuiz();
+                } else {
+                    Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
+                    clearFields();
                 }
                 break;
             case 2:
-                if (mAnswer1.getText() == "T") {
-                    Toast.makeText(this, "Answer one is correct", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer1.getText() == "F") {
-                    Toast.makeText(this, "Answer one is wrong", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer2.getText() == "T") {
-                    Toast.makeText(this, "Answer two is correct", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer2.getText() == "F") {
-                    Toast.makeText(this, "Answer two is wrong", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer3.getText() == "T") {
-                    Toast.makeText(this, "Answer three is correct", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer3.getText() == "F") {
-                    Toast.makeText(this, "Answer three is wrong", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer4.getText() == "F") {
-                    Toast.makeText(this, "Answer four is correct", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer4.getText() == "T") {
-                    Toast.makeText(this, "Answer four is wrong", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(answer1) || TextUtils.isEmpty(answer2) || TextUtils.isEmpty(answer3) || TextUtils.isEmpty(answer4)){
+                    Toast.makeText(this, "Please fill in all the answers", Toast.LENGTH_SHORT).show();
+                } else if (answer1.equals("T") && answer2.equals("T") && answer3.equals("T") && answer4.equals("F")){
+                    Toast.makeText(this, "All the answers are correct", Toast.LENGTH_SHORT).show();
+                    clearFields();
+                    changeQuiz();
+                } else {
+                    Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
+                    clearFields();
                 }
                 break;
             case 3:
-                if (mAnswer1.getText() == "T") {
-                    Toast.makeText(this, "Answer one is correct", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer1.getText() == "F") {
-                    Toast.makeText(this, "Answer one is wrong", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer2.getText() == "F") {
-                    Toast.makeText(this, "Answer two is correct", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer2.getText() == "T") {
-                    Toast.makeText(this, "Answer two is wrong", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer3.getText() == "T") {
-                    Toast.makeText(this, "Answer three is correct", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer3.getText() == "F") {
-                    Toast.makeText(this, "Answer three is wrong", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer4.getText() == "T") {
-                    Toast.makeText(this, "Answer four is correct", Toast.LENGTH_SHORT).show();
-                } else if (mAnswer4.getText() == "F") {
-                    Toast.makeText(this, "Answer four is wrong", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(answer1) || TextUtils.isEmpty(answer2) || TextUtils.isEmpty(answer3) || TextUtils.isEmpty(answer4)){
+                    Toast.makeText(this, "Please fill in all the answers", Toast.LENGTH_SHORT).show();
+                } else if (answer1.equals("T") && answer2.equals("F") && answer3.equals("T") && answer4.equals("T")){
+                    Toast.makeText(this, "All the answers are correct", Toast.LENGTH_SHORT).show();
+                    clearFields();
+                    changeQuiz();
+                } else {
+                    Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
+                    clearFields();
                 }
                 break;
         }
